@@ -1,0 +1,48 @@
+.modal {
+  height: 30vh;
+  width: 30vw;
+  position: fixed;
+  background: #fff;
+  padding: 30px;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+
+  .close {
+    cursor: pointer;
+    width: 100%;
+    text-align: end;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid #3957c0;
+      width: 100%;
+    }
+
+    p {
+      margin-top: 5px;
+      color: red;
+    }
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .modal {
+    width: 80vw;
+  }
+}

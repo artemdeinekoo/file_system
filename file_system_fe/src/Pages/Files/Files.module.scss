@@ -1,0 +1,79 @@
+.files {
+  padding: 40px;
+  width: 100%;
+  height: 100vh;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      button,
+      a {
+        cursor: pointer;
+        background: #3957c0;
+        height: 60px;
+        border-radius: 20px;
+        color: #fff;
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+
+        img {
+          width: 20px;
+        }
+      }
+
+      button:hover,
+      a:hover {
+        background: #576ec2;
+      }
+    }
+  }
+
+  .divider {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #7393b3;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .back {
+    margin: 20px 0;
+    cursor: pointer;
+    padding: 5px;
+    background: #3957c0;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .files {
+    padding: 10px;
+
+    .top {
+      flex-direction: column;
+      gap: 20px;
+      .buttons {
+        width: 100%;
+        flex-direction: column;
+      }
+    }
+
+    .main {
+      justify-content: flex-start;
+    }
+  }
+}

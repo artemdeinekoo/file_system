@@ -1,0 +1,20 @@
+.modal {
+  position: fixed;
+  z-index: 100;
+  width: 80vw;
+  height: 80vh;
+  background: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  top: 70px;
+  padding: 30px 30px;
+
+  button {
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+    text-align: end;
+  }
+}

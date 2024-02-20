@@ -1,0 +1,64 @@
+.files {
+  padding: 40px;
+  background: #eeeaea;
+  width: 100%;
+  height: 100vh;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+
+    .back {
+      cursor: pointer;
+      background: #3957c0;
+      height: 60px;
+      border-radius: 20px;
+      color: #fff;
+      padding: 20px;
+      font-size: 20px;
+    }
+
+    .back:hover {
+      background: #576ec2;
+    }
+
+    input {
+      height: 50px;
+      padding: 10px;
+    }
+  }
+
+  .divider {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #7393b3;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+
+@media all and (max-width: 1024px) {
+  .files {
+    padding: 10px;
+    .top {
+      flex-direction: column;
+      gap: 20px;
+
+      .back {
+        text-align: center;
+      }
+
+      input {
+        height: 50px;
+      }
+    }
+  }
+}

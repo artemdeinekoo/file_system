@@ -1,0 +1,62 @@
+.obj {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  max-width: 80px;
+
+  .buttons {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    justify-content: space-between;
+    width: 100%;
+
+    button {
+      cursor: pointer;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    button:hover {
+      background: #3957c0;
+    }
+  }
+
+  h4 {
+    max-width: 80px;
+    overflow:hidden; 
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .metadata {
+    bottom: -150px;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+
+    background: rgb(157, 171, 184);
+    span {
+      font-weight: 300;
+      font-size: 13px;
+    }
+  }
+}
+
+.obj:hover {
+  .buttons {
+    display: flex;
+  }
+  .metadata {
+    display: flex;
+  }
+}

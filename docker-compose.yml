@@ -1,0 +1,52 @@
+version: "3.9"
+
+networks:
+  app:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app
+
+  frontend:
+    build:
+      context: ./file_system_fe
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./file_system_fe:/app/file_system_fe
+
+  backend:
+    build:
+      context: ./file_system_be
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=postgres 
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./file_system_be:/app/file_system_be
+    depends_on:
+      - postgres
+    networks:
+      - app
+    restart: always
+
+volumes:
+  pg_data:
