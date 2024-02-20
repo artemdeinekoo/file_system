@@ -23,20 +23,12 @@ class FolderSerializer(serializers.ModelSerializer):
         ]
 
     def validate(self, data):
+        parent_folder_id = data.get("parentFolderId")
+        name = data.get("name")
 
-        if self.instance is not None and Folder.objects.filter(
-            parentFolderId=None, name=data["name"]
-        ).exclude(id=self.instance.id):
+        if Folder.objects.filter(parentFolderId=parent_folder_id, name=name).exists():
             raise ValueError("Folder with this name already exists in the directory")
 
-        elif (
-            self.instance is not None
-            and "parentFolderId" in data
-            and Folder.objects.filter(
-                parentFolderId=data["parentFolderId"], name=data["name"]
-            ).exclude(id=self.instance.id)
-        ):
-            raise ValueError("Folder with this name already exists in the directory")
         return data
 
 
@@ -61,19 +53,15 @@ class FileSerializer(serializers.ModelSerializer):
         ]
 
     def validate(self, data):
+        parent_folder_id = data.get("parentFolderId")
+        name = data.get("name")
 
-        if self.instance is not None and File.objects.filter(
-            parentFolderId=None, name=data["name"]
-        ).exclude(id=self.instance.id):
-            raise ValueError("File with this name already exists in the directory")
-
-        elif (
-            self.instance is not None
-            and "parentFolderId" in data
-            and File.objects.filter(
-                parentFolderId=data["parentFolderId"], name=data["name"]
-            ).exclude(id=self.instance.id)
-        ):
-            raise ValueError("File with this name already exists in the directory")
+        if File.objects.filter(parentFolderId=parent_folder_id, name=name).exists():
+            instance = self.instance
+            if instance and instance.name == name:
+                return data
+            raise serializers.ValidationError(
+                "File with this name already exists in the directory"
+            )
 
         return data
