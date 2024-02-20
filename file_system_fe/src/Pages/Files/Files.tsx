@@ -34,7 +34,7 @@ const Files = () => {
           <button onClick={() => setAddFile(true)}>New File</button>
           <button onClick={() => setAddFolder(true)}>New Folder</button>
           <button onClick={() => setSorting("name")}>Sort by name</button>
-          <button onClick={() => setSorting("")}>Sort by size</button>
+          <button onClick={() => setSorting("byteSize")}>Sort by size</button>
           <Link to={"/search"}>
             <img src={search} alt="" />
           </Link>
